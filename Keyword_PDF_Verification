@@ -1,6 +1,6 @@
 #Inputs
 directory = r"./"
-list_of_keywords = ['race']
+list_of_keywords = ['']
 
 
 #Make an empty list to add pdf's that contain the keywords to
