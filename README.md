@@ -16,3 +16,5 @@ Description of Contents:
 **Text_Column_Manipulation** Contains my favorite little chunk of code - takes a column and breaks it based on a delimiter to create new columns. Useful for very messy data. Can be used to extract specific strings from a large chunk of text (IE "Here's some text Blahblahblah = I need this value," would be split by setting delimiter to "Blahblahblah = " then adding another split at the end for a "," to chunk off the remainder of the text.
 
 **DICOM_Manipulation** Some simple code to load in DICOM images, convert to a pixel array, make a histogram, and convert to PNG.
+
+**Video_Manipulation** Simple code to read in a video file and process it frame by frame.
