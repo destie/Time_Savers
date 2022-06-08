@@ -10,3 +10,5 @@ Description of Contents:
 **NpArray_and_Image_Manipulation** Contains some simple code to modify arrays and images (Change all the values to be > or < than a value, merge some values, etc.).
 
 **Dataframe_Manipulation** Contains some simple code to update column values in a dataframe.
+
+**Directory_Processing** Contains some simple code to cycle through a directory and do things, or to cycle through multiple values and list in tandem. The random example I have in here is for image segmentation masks.
