@@ -1,0 +1,35 @@
+#Inputs
+directory = r"./"
+list_of_keywords = ['race']
+
+
+#Make an empty list to add pdf's that contain the keywords to
+list_of_names = []        
+
+#Cycle through all files in a directory
+for filename in os.listdir(directory):
+    #Check if it's a pdf
+    if filename.endswith(".pdf"):
+        #Check if it exists
+        if os.path.exists((os.path.join(directory, filename))):
+                pdf_doc = open((os.path.join(directory, filename)), "rb")
+                view = SimplePDFViewer(pdf_doc)
+                #Cycle through the pages in the pdf
+                try:
+                    while True:
+                        #Open the pdf and search through the text
+                        view.render()
+                        text = "".join(view.canvas.strings)
+                        #See if the key word is present in the text
+                        for word in list_of_keywords:
+                            if word in text:
+                                #Print it if found - feel free to comment this if it's annoying for your workflow, I use it as a sanity check
+                                print("The word '{}' was found in '{}' on page {}".format(word, filename, view.current_page_number))
+                                #Add the filename to the list so you know which documents have it, I only make one list and have one input (the filename), but add more lists/ variables here if needed
+                                list_of_names.append(str(filename))
+                        view.next()
+                        
+                #Stop the loop when the pdf is out of pages
+                except PageDoesNotExist:
+                    pass
+print(list_of_names)
