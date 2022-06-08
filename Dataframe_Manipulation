@@ -1,0 +1,11 @@
+#######################################################################################################
+### Manipulate all rows in a dataframe, list, or arry that fit some condition
+
+### Using loc
+df.loc[(df.Column == 'Condition'),'Column']='Item to Replace It With'
+
+### Using Numpy.where
+df['Column'] = np.where((df.Column == 'Condition'),'Replace',df.Column)
+
+### Using mask
+df['Column'].mask(df['Column'] == 'Condition', 'Replace', inplace=True) 
