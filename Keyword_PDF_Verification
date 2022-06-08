@@ -1,3 +1,6 @@
+import os
+from pdfreader import SimplePDFViewer, PageDoesNotExist
+
 #Inputs
 directory = r"./"
 list_of_keywords = ['']
