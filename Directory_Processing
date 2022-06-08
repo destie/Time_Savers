@@ -1,0 +1,19 @@
+#######################################################################################################
+### Cycling through a directory ####
+for subdir, dirs, files in os.walk(directory):
+    i = 0
+    #Cycle through each file
+    for file in files:
+        #Check if something is in the file to load the a specific file, in this example I said the word mask like for identifying the masks of a segmentation model
+        if "Mask" in file:
+            print(file + " has Mask")
+            #Load each image (segmentation mask)
+            img = imread(os.path.join(subdir,file), IMREAD_GRAYSCALE)
+            img = res(img, dsize=(IMG_HEIGHT, IMG_WIDTH), interpolation=inter)            
+            Y[i] = img
+            i+=1
+
+
+#To do two files in parallel (IE Mask and Image together)
+for f, v in zip(faces, viz):
+    print("Results of processing two things at once" )   
