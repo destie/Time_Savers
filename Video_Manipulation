@@ -1,0 +1,17 @@
+########################################################################################333
+#Video file manipulations 
+
+#### Reading in video and capture each frame to process line by line
+from cv2 import VideoCapture
+cap = VideoCapture(infile)
+while cap.isOpened():
+    # image is a numpy array containing the next frame
+    retval, img = cap.read()
+    #Make sure you change the colors
+    img_left = cv2.cvtColor(img,cv2.COLOR_RGB2BGR)
+
+    #Do stuff here
+
+    if not retval:
+        break
+cap.release()
