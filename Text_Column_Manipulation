@@ -1,0 +1,7 @@
+###################################################################################################
+### Text based manipulation 
+
+### Pull out specific string from a column and make new column for each entry, this would be for a column that has been concatenated to include two values by some arbitrary token - represented here by a ","
+b = DataFrame(a.var1.str.split(',').tolist(), index=a.var2).stack()
+b = b.reset_index()[[0, 'var2']] # var1 variable is currently labeled 0
+b.columns = ['var1', 'var2'] # renaming var1
