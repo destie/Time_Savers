@@ -1,0 +1,40 @@
+import pydicom as dicom
+import glob
+
+
+def person_names_callback(dataset, data_element):
+    if data_element.VR == "PN":
+        data_element.value = "anonymous"
+
+
+def curves_callback(dataset, data_element):
+    if data_element.tag.group & 0xFF00 == 0x5000:
+        del dataset[data_element.tag]
+
+directory = 
+savedirectory = 
+Patient_name = 
+
+for fname in glob.glob(r"D:\SE0\*", recursive=False):
+    name = fname.split("\\")[2]
+    dataset = dicom.dcmread(fname)
+    dataset.PatientID = "id"
+    dataset.walk(person_names_callback)
+    dataset.walk(curves_callback)
+
+    dataset.remove_private_tags()
+
+    if 'OtherPatientIDs' in dataset:
+        delattr(dataset, 'OtherPatientIDs')
+
+    if 'OtherPatientIDsSequence' in dataset:
+        del dataset.OtherPatientIDsSequence
+
+
+    tag = 'PatientBirthDate'
+    if tag in dataset:
+        dataset.data_element(tag).value = '19000101'
+    
+    
+    dataset.save_as(savedirectory + Patient_name + name)     
+    
