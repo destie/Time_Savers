@@ -18,3 +18,5 @@ Description of Contents:
 **DICOM_Manipulation** Some simple code to load in DICOM images, convert to a pixel array, make a histogram, and convert to PNG.
 
 **Video_Manipulation** Simple code to read in a video file and process it frame by frame.
+
+**Remove_DICOM_Metadata** Simple code to remove the metadata from a DICOM file to anonymize it.
